@@ -4,8 +4,12 @@ import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  const [value, setValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [isEnter, setIsEnter] = useState(false);
+
+  const searchCustomerExist = (name: string) => {
+    alert(name);
+  };
 
   return (
     <div className={styles.container}>
@@ -17,19 +21,19 @@ export default function Home() {
 
       <input 
         type='text'
-        value={value}
+        value={searchValue}
         onChange={(e) => {
-          setValue(e.target.value)
+          setSearchValue(e.target.value)
           setIsEnter(false);
         }}
         onBlur={(e) => {
           if(!isEnter) {
-            alert('onBlur');
+            searchCustomerExist('onblur');
           }
         }}
         onKeyPress={(e) => {
           if(e.key === 'Enter' || e.charCode === 13) {
-            alert('Enter');
+            searchCustomerExist('enter');
             setIsEnter(true);
           } 
         }}
